@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title></title>
+</head>
+
+<body>
+	<div class="container text-center">
+		<div>
+			<h1><a th:href="@{/}">Home</a></h1>
+		</div>
+		<div>
+			<h1>Liste Des Condidats</h1>
+		</div>
+		<div>
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>ID</th>
+						<th>Nom Complet</th>
+						<th>Email</th>
+						<th>Mot de Passe</th>
+						<th>Role</th>
+						<th>Telephone</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="cand : ${listCandidates}">
+						<tr>
+							<td>[[${cand.id}]]</td>
+							<td>[[${cand.fullname}]]</td>
+							<td>[[${cand.email}]]</td>
+							<td>[[${cand.password}]]</td>
+							<td>[[${cand.role}]]</td>
+							<td>[[${cand.phone}]]</td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>
