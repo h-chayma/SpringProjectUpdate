@@ -16,6 +16,11 @@ public class Answer {
 
 	private String answerText;
 
+	public Answer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Answer(Long id, String answerText) {
 		super();
 		this.id = id;

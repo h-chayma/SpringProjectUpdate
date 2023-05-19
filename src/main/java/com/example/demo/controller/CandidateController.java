@@ -25,4 +25,29 @@ public class CandidateController {
 		model.addAttribute("listCandidates", listCandidates);
 		return "candidates";
 	}
+
+	@GetMapping("/candidates/new")
+	public String CreateNewCandidateForm(Model model) {
+		model.addAttribute("candidate", new Candidate());
+		return "candidate_form";
+	}
+
+	@PostMapping("/candidates/save")
+	public String saveCandidate(Candidate candidate) {
+		candidateRepository.save(candidate);
+		return "redirect:/candidates";
+	}
+
+	@GetMapping("/candidates/edit/{id}")
+	public String showEditForm(@PathVariable("id") Long id, Model model) {
+		Candidate candidate = candidateRepository.findById(id).get();
+		model.addAttribute("candidate", candidate);
+		return "candidate_form";
+	}
+
+	@GetMapping("/candidates/delete/{id}")
+	public String deleteCandidate(@PathVariable("id") Long id, Model model) {
+		candidateRepository.deleteById(id);
+		return "redirect:/candidates";
+	}
 }

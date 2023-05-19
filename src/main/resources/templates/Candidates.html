@@ -4,6 +4,8 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title></title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+
 </head>
 
 <body>
@@ -12,7 +14,10 @@
 			<h1><a th:href="@{/}">Home</a></h1>
 		</div>
 		<div>
-			<h1>Liste Des Condidats</h1>
+			<h1>Liste Des Candidates</h1>
+		</div>
+		<div>
+			<h3><a th:href="@{/CONDIDATE/candidates/new}">Ajouter Un Nouveau Candidate</a></h3>
 		</div>
 		<div>
 			<table class="table table-bordered">
@@ -24,17 +29,23 @@
 						<th>Mot de Passe</th>
 						<th>Role</th>
 						<th>Telephone</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 					<th:block th:each="cand : ${listCandidates}">
 						<tr>
 							<td>[[${cand.id}]]</td>
-							<td>[[${cand.fullname}]]</td>
+							<td>[[${cand.fullName}]]</td>
 							<td>[[${cand.email}]]</td>
 							<td>[[${cand.password}]]</td>
-							<td>[[${cand.role}]]</td>
+							<td th:text="${cand.role ?: 'user'}"></td>
 							<td>[[${cand.phone}]]</td>
+							<td>
+								<a th:href="@{'/CONDIDATE/candidates/edit/' + ${cand.id}}">Modifier</a>
+								&nbsp;&nbsp;
+								<a th:href="@{'/CONDIDATE/candidates/delete/' + ${cand.id}}">Supprimer<a>
+							</td>
 						</tr>
 					</th:block>
 				</tbody>

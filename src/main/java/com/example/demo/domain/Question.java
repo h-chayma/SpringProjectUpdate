@@ -34,6 +34,11 @@ public class Question {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
     private List<Proposition> propositions;
 
+	public Question() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Question(Long id, String questionText, Test test, Answer answer) {
 		super();
 		this.id = id;

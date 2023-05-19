@@ -20,6 +20,11 @@ public class Test {
 
 	private String title;
 
+	public Test() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	private String description;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "test")

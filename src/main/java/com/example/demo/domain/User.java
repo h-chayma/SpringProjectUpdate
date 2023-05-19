@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,17 +10,18 @@ import jakarta.persistence.MappedSuperclass;
 
 public abstract class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String fullName;
+	private String fullName;
 
-    private String email;
+	private String email;
 
-    private String password;
+	private String password;
 
-    private String role;
+	@Column(name = "role")
+	private String role;
 
 	public User() {
 		super();
